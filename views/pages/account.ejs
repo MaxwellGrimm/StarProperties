@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\account.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\account.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <div class="account-header">
+      <img src="images/person-icon.png" id="person-icon" alt="Person Icon"/>
+      <h1 id="account-name">Welcome <span id="account-holder-name"><%= accountInfo[0].useremail %></span></h1>
+    </div>
+    <div class="account-information">
+      <p>Here at Star Properties LLC. we make it much easier for 
+        tenants to pay their rent. Since you are signed in you can pay
+        any outstanding balance using paypal secure transaction. All of your
+        information is secured backed by paypal security.
+      </p>
+      <form method="GET" action="/logout" class="account-container">
+        <button type="submit" value="Logout" id="sign-out" >Sign Out</button>
+      </form>
+      </div>
+      
+    </div>
+    <div class="account-information">
+      <div class="account-container">
+        <h2>Account Information</h2>
+      </div>
+      <p>Current account balance is: $<span id="balance-of-account"><%= accountInfo[0].userbalance %></span></p>
+      <div class="account-container">
+        <a href="/payrent"><button id="pay">Make Payment</button></a>
+      </div>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+  
+</html>

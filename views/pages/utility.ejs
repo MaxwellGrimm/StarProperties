@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\utility-information.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\utility-information.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <div class="utilities-header">
+        <h1 id="utilities-title">Utilities Information</h1>
+    </div>
+    <div class="utilities-requests">
+        <p id="info">Star Properties, LLC strives to keep our properties as safe
+            and clean as possible. However, we know that sometimes
+            things can break.
+        </p>
+        <p id="info">If you have a service request let us know by clicking either
+            option down below. Please try and give a detailed description
+            and we can try and get it fixed as soon as possible.
+        </p> 
+        <div id="low-urgency-container">
+           <p class="urgency" id="low-urgency">Low to Normal Urgency</p> 
+            <a id="low-urgency-button" href = "mailto:thegrifter52@gmail.com?subject = Service Request&body = Non Urgent: "><button>Service Requests</button></a> 
+        </div>
+        <div id="high-urgency-container">
+            <p id="high-urgency" class="urgency">Urgent Request</p>
+            <a id="high-urgency-button" class="urgency"><button>Please Call 262-422-9122</button></a>
+        </div>
+    </div>
+    <div class="utilities-requests">
+        <h2 id="basic-information">Basic Information</h2>
+        <div id="garbage-container">
+            <p>Garbage Information</p>
+            <a><button>Garbage Pickup Info PDF</button></a> 
+        </div>
+        <div id="lease-container">
+            <p>Lease Information</p>
+            <a><button>Lease PDF</button></a> 
+        </div>
+        <p id="warning">If you smell natural gas evacuate the building. Do not turn off or on any electronics, and 
+            do not press the fire alarm. Once out of the building, call 911. </p>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+
+</html>

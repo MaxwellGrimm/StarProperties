@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\pay-rent.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\pay-rent.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <div id="content-container">
+      <div id="top-info">
+        <h2>Signed In As: <%= accountInfo[0].useremail %></h2>
+        <h2>Current Balance: $<%= accountInfo[0].userbalance %></h2>
+        <p id="info">Here at Star Properties LLC. we make it easier for tenants to pay rent. 
+          Just input the balance shown and hit make a payment. You will be redirected 
+          to Paypal to make the payment. None of your creditcard or personal information 
+          is sent through this form. Any fees incured through paypal are not covered by 
+          Star Properties LLC. There is always an option to submit payments via the drop 
+          box at our office.</p>
+      </div>
+      <form action="/pay" method="POST">
+        <input type="number" placeholder="425" name="amount" id="payment-amount"/>    
+        <input type="submit" value="Make Payment" name="submit" id="payment-submit"/>
+      </form>
+    </div>
+    <%- include('../partials/footer'); %>
+</body>
+
+</html>

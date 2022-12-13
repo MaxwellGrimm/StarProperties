@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="/css/HomePage.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="/javascript/HomePage.js" defer></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <div class="home" id="home-container">
+      <div id="home-photo-container">
+        <div id="home-title">
+          <h2>Star Properties</h2>
+          <p>Where You Are The Star</p>
+        </div>
+      </div>
+      <p class="home" id="home-text">We are proud owners of over 50 different properties all around Oshkosh. When you rent from us we make it our mission to provide
+        you with a quality property that you can call your home.</p>
+      <p class="home" id="home-question">Have any questions?</p>
+      <a id="home-contact-button-wrapper" href = "/contact">
+        <button class="home" id="home-contact-button">Contact Us Today</button>
+      </a>
+      
+    </div>
+    <div class="tenant">
+      <div class="tenant" id="tenant-container">
+        <h3 id="tenant-header">Already a Tenant</h3>
+        <p class="tenant-content">If you are already a tenant, sign in to pay rent or get more information.
+           Sign in using the id and password given to you by Star Properties.</p>
+        <div id="sign-in-button-container"><a href="/signIn"><button class="sign-in" id="sign-in-button">Sign In</button></a></div>
+      </div>
+    </div>
+    <div id="home-mission">
+      <div id="mission-photo-container">
+        <h2 id="mission-title">Our Mission</h2>
+      </div>
+      <h3 id="mission-statement">To help you find a place that feels like home.</h3>
+    </div>
+    <div id="about-us-listing">
+      <div class="about-us" id="about-us-container">
+        <h3 class="about-us" id="about-us-title">About Us</h3>
+      </div>
+      <div class="about-us" id="about-us-content-container">
+        <p class="about-us about-us-content">Star Properties, LLC is proud to offer housing around the University of Wisconsin - 
+          Oshkosh campus. We pride ourselves on offering affordable, clean and safe housing to students. 
+          We are committed to caring for our properties, responding to renter's requests and meeting the needs of our renters.</p>
+        <p class="about-us about-us-content">Take some time to look at our available properties and feel free to call,
+           text or email with any questions you may have or to set up a showing. </p>
+    </div>
+    <div class="listing-plug">
+      <h3 class="listing-plug" id="listing-header">Interested</h3>
+      <p class="listing-plug" id="listing-discription">Check out some of our houses.</p>
+      <a href="/listings"><button class="listing-plug" id="listing-plug-button">Listings</button></a>
+    </div>
+  </div>
+  <h2>Our office is located at: 888 Jackson St, Oshkosh, WI 54901</h2>
+  <p id="weather-block">Refresh the page for a weather update!</p>
+  <div id="map"></div>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKwjPXjyJFy0KXIiqBioob6N6ebhZ41Rk&callback=initMap">
+    </script>
+  <%- include('../partials/footer'); %>
+</body>
+
+</html>

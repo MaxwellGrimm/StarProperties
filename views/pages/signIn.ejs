@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\sign-in.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\sign-in.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <h2>Sign In</h2>
+    <form id="sign-in" method="POST" action="/auth">
+        <p id="description">Use the username and password given to you by Star Properties. If you are a current tenant and forgot your password, send us a message and we will respond as soon a possible.</p>
+        <input type="text" name="userName" placeholder="Username" id="username" value="test"></input>
+        <input type="password" name="password" placeholder="Password" id="password" value="password"></input>
+        <button id="sign-in-submit-button">Sign In</button>
+    </form>
+    <%- include('../partials/footer'); %>
+</body>
+
+</html>

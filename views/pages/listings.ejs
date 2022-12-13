@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\listings.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\listings.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <div class="listing-header">
+        <h1>Star Properties</h1>
+        <h2>Listings</h2>
+    </div>
+    <form id="search-form" action="/listingsSearch" method="POST" >
+        <select name="propertyType">
+            <option value="" disabled selected>Property Type</option>
+            <option value="Duplex">Duplex</option>
+            <option value="Multi-Family Home">Multi-Family Home</option>
+            <option value="Single-Family Home">Single-Family Home</option>
+            <option value="Condo">Condo</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Townhome">Townhome</option>
+        </select>
+        <select name="numBeds" >
+            <option value="" disabled selected>Number of Beds</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+        <select name="numBaths">
+            <option value="" disabled selected>Number of Baths</option>
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3</option>
+        </select>
+        <input type="submit" class="submit-button" value="Find Home"></input>
+    </form>
+    <form class="all-listings-container" action="/property" method="POST">
+        <% if(allProperties.length > 0){ %>
+        <% for(let i = 0; i < allProperties.length; i++){ %>
+            <div class="listings-container">
+                <label>
+                   <input onchange="this.form.submit();" class="hideThisAndSendInfo" type="radio" name="street" value="<%= allProperties[i].street %>">
+                    <img class="listing-photo" src="images/properties/<%= allProperties[i].picturelink1 %>" alt="House Photo"/> 
+                </label>
+                <p class="on-listing-image-text"><%= allProperties[i].type %></p>
+                <div class="listing-info">
+                    <h2 class="listing-property-name"><%= allProperties[i].street %></h2>
+                    <p class="listing-zip"><%=allProperties[i].city%>, <%=allProperties[i].state%> <%=allProperties[i].zip%></p>
+                    <div class="listing-info-lables">
+                        <p class="listing-info-beds">Beds</p>
+                        <p class="listing-info-baths">Baths</p>
+                    </div>
+                    <div class="listing-info-numbers">
+                        <p class="listing-info-beds-number"><%= allProperties[i].beds%></p>
+                        <p class="listing-info-baths-number"><%= allProperties[i].baths%></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <div id="disclaimer">
+            <h3>Click a listing to get more information</h3>
+        </div>
+        <% } else { %>
+            <h3 id="noListings">Seems like nothing with those specifications is avaliable right now</h3>
+        <% } %>
+        </form>
+    <%- include('../partials/footer'); %>
+</body>
+</html>

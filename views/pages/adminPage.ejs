@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    How to avoid dropdown menu to close menu items on click inside ?
+  </title>
+  <link href="css\admin.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="javascript\admin.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+    <%- include('../partials/header'); %>
+    <h2 class="admin-title">Fill Out All Fields To Add A Property</h2>
+    <form id="create-listing" action="/upload" method="POST" enctype="multipart/form-data">
+        <div><label class="add-label">Street</label><input type="text" name="street" required placeholder="Street" value="14 Elm Street" class="add-input"/></div>
+        <div><label class="add-label">City</label><input type="text" name="city" required placeholder="City" value="Oshkosh" class="add-input"/></div>
+        <div><label class="add-label">State</label><input type="text" name="state" required placeholder="State" value="WI" class="add-input" maxlength="2" minLength="2"/></div>
+        <div><label class="add-label">Zip</label><input type="text" name="zip" required placeholder="Zip" value="54901" class="add-input" maxlength="5" minlength="5"/></div>
+        <div><label class="add-label">Avaliable</label><select name="avaliable" class="add-input">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        </div>
+        <div><label class="add-label">Beds</label><input type="number" name="beds" required placeholder="Beds" value="4" class="add-input"/></div>
+        <div><label class="add-label">Baths</label><input type="number" name="baths" required placeholder="Baths" value="3" class="add-input"/></div>
+        <div><label class="add-label">Rent</label><input type="number" name="rent" required placeholder="Rent" value="430" class="add-input"/></div>
+        <div><label class="add-label">Property Type</label><select name="type">
+            <option value="" disabled selected>Property Type</option>
+            <option value="Duplex">Duplex</option>
+            <option value="Multi-Family Home">Multi-Family Home</option>
+            <option value="Single-Family Home">Single-Family Home</option>
+            <option value="Condo">Condo</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Townhome">Townhome</option>
+        </select></div>
+        <div><label class="add-label">Latitude</label><input type="number" name="lat" required placeholder="Latitude" value="44.00" class="add-input"/></div>
+        <div><label class="add-label">Longitude</label><input type="number" name="lng" required placeholder="Longitude" value="-88.0" class="add-input"/></div>
+        <div><label class="add-label">Information</label><input type="text" name="info" required placeholder="Info" value="Great House" class="add-input"/></div>
+        <div><label for='file'>Select your image:</label>
+            <input type='file' multiple='multiple' accept='image/*' name='uploadedImages' id='file' />
+            <span class='hint'>Supported files: jpg, jpeg, png.</span></div>
+        <div><input type="submit" id="submit-button"/></div>
+    </form>
+    <h2 class="admin-title">Fill Out All Fields To Add A User</h2>
+    <form id="create-user" action="/createUser" method="POST">
+        <div><label class="add-label">User Email</label><input type="text" name="useremail" required placeholder="User Email" value="newUser" class="add-input"/></div>
+        <div><label class="add-label">User Balance</label><input type="number" name="balance" required placeholder="Balance" value="425" class="add-input"/></div>
+        <div><label class="add-label">Street</label><input type="text" name="street" required placeholder="Street" value="1010 Wright Street" class="add-input"/></div>
+        <div><label class="add-label">State</label><input type="text" name="state" required placeholder="WI" value="WI" class="add-input" maxlength="2" minlength="2"/></div>
+        <div><label class="add-label">Zip</label><input type="text" name="zip" required placeholder="Zip" value="54901" class="add-input" maxlength="5" minlength="5"/></div>
+        <div><label class="add-label">Password</label><input type="text" name="password" required placeholder="password" value="password" class="add-input"/></div>
+        <div><input type="submit" id="submit-button"/></div>
+    </form>
+    <h2 class="admin-title">Click photo of house you want to remove from the database</h2>
+    <div class="container-container">
+      <form class="all-listings-container" action="/removeProperty" method="POST">
+        <% if(allProperties.length > 0){ %>
+        <% for(let i = 0; i < allProperties.length; i++){ %>
+            <div class="listings-container">
+                <label>
+                   <input onchange="this.form.submit();" class="hideThisAndSendInfo" type="radio" name="street" value="<%= allProperties[i].street %>">
+                    <img class="listing-photo" src="images/properties/<%= allProperties[i].picturelink1 %>" alt="House Photo"/> 
+                </label>
+                <h4>Click the photo button to delete this property from the database</h4>
+                <p class="on-listing-image-text"><%= allProperties[i].type %></p>
+                <div class="listing-info">
+                    <h2 class="listing-property-name"><%= allProperties[i].street %></h2>
+                    <p class="listing-zip"><%=allProperties[i].city%>, <%=allProperties[i].state%> <%=allProperties[i].zip%></p>
+                    <div class="listing-info-lables">
+                        <p class="listing-info-beds">Beds</p>
+                        <p class="listing-info-baths">Baths</p>
+                    </div>
+                    <div class="listing-info-numbers">
+                        <p class="listing-info-beds-number"><%= allProperties[i].beds%></p>
+                        <p class="listing-info-baths-number"><%= allProperties[i].baths%></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <div id="disclaimer">
+            <h3>Click a listing to get more information</h3>
+        </div>
+        <% } else { %>
+            <h3 id="noListings">Seems like nothing with those specifications is avaliable right now</h3>
+        <% } %>
+    </form>  
+    </div>
+    
+    <%- include('../partials/footer'); %>
+</body>
+</html>
